@@ -1,0 +1,19 @@
+<header>
+    <nav>
+        <div class="logo"></div>
+        <button (click)="router.navigateByUrl('')">Startseite</button>
+        <button (click)="router.navigateByUrl('apps')">Apps</button>
+        <button (click)="router.navigateByUrl('quotes')">Zitate</button>
+        <button (click)="router.navigateByUrl('news')">Mua-News</button>
+        <button (click)="router.navigateByUrl('community')">Community</button>
+    </nav>
+    <div class="sign-in-area">
+        <button class="sign-in-btn" (click)="(auth.signedIn ? auth.signOut : auth.signIn)()">
+            {{ auth.signedIn ? 'Abmelden' : 'Anmelden' }}
+        </button>
+        <div *ngIf="auth.signedIn" class="user-data">
+            <p class="info">Angemeldet als</p>
+            <p class="username">{{ auth.user?.displayName + (auth.isAdmin ? ' (Admin)' : '') }}</p>
+        </div>
+    </div>
+</header>

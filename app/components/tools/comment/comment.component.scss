@@ -1,0 +1,41 @@
+main {
+    width: 100%;
+    padding: 15px;
+    background-color: #1e1e22;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        .message-label {
+            font-size: 10pt;
+            width: calc(100% - 40px);
+        }
+
+        svg {
+            fill: white;
+            width: 25px;
+            height: 25px;
+            padding: 2.5px;
+            margin-left: 15px;
+            border-radius: 50%;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #fff2;
+            }
+        }
+    }
+
+    .info-label {
+        font-size: 10pt;
+        text-align: right;
+        color: #ddd;
+        font-style: italic;
+        padding-right: 5px;
+    }
+}

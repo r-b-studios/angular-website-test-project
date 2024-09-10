@@ -1,0 +1,62 @@
+<main class="box" [id]="key">
+    <div *ngIf="!editMode">
+        <p *ngIf="previous.length > 0" class="previous-label">"{{ previous }}"</p>
+        <p class="quote-label">"{{ quote }}"</p>
+        <p *ngIf="description.length > 0" class="description-label">({{ description }})</p>
+        <p class="author-label">- {{ author }}</p>
+    </div>
+    <div [class]="'edit-area' + (editMode ? ' edit' : '')">
+        <p class="input-label">Vorheriges Zitat (optional)</p>
+        <input [id]="'previous-' + key">
+        <p class="input-label">Zitat</p>
+        <input [id]="'quote-' + key" [value]="quote">
+        <p class="input-label">Beschreibung (optional)</p>
+        <input [id]="'description-' + key">
+        <p class="input-label">Autor</p>
+        <input [id]="'author-' + key">
+    </div>
+    <nav>
+        <div class="like-btns">
+            <svg viewBox="0 96 960 960" (click)="like()">
+                <path *ngIf="!liked" d="M716 936H272V424l278-288 39 31q6 5 9 14t3 22v10l-45 211h299q24 0 42 18t18 42v81.839q0 7.161 1.5 14.661T915 595L789 885q-8.878 21.25-29.595 36.125Q738.689 936 716 936Zm-384-60h397l126-299v-93H482l53-249-203 214v427Zm0-427v427-427Zm-60-25v60H139v392h133v60H79V424h193Z"/>
+                <path *ngIf="liked" d="M721 936H254V424l278-288 33 26q11 8 14.5 18t3.5 23v10l-45 211h322q23 0 41.5 18.5T920 484v82q0 11-2.5 25.5T910 617L794 885q-9 21-29.5 36T721 936ZM194 424v512H80V424h114Z"/>
+            </svg>
+            <span>{{ likes.length }}</span>
+            <svg viewBox="0 96 960 960" (click)="dislike()">
+                <path *ngIf="!disliked" d="M242 216h444v512l-278 288-39-31q-6-5-9-14t-3-22v-10l45-211H103q-24 0-42-18t-18-42v-81.839Q43 579 41.5 571.5T43 557l126-290q8.878-21.25 29.595-36.125Q219.311 216 242 216Zm384 60H229L103 575v93h373l-53 249 203-214V276Zm0 427V276v427Zm60 25v-60h133V276H686v-60h193v512H686Z"/>
+                <path *ngIf="disliked" d="M239 216h467v512l-278 288-33-26q-11-8-14.5-18t-3.5-23v-10l45-211H100q-23 0-41.5-18.5T40 668v-82q0-11 2.5-25.5T50 535l116-268q9-21 29.5-36t43.5-15Zm527 512V216h114v512H766Z"/>
+            </svg>
+            <span>{{ dislikes.length }}</span>
+        </div>
+        <div *ngIf="auth.isAdmin" class="edit-btns">
+            <svg *ngIf="!editMode" class="edit-btn" viewBox="0 96 960 960" (click)="edit()">
+                <path d="M794 390 666 262l42-42q17-17 42.5-16.5T793 221l43 43q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Z"/>
+            </svg>
+            <svg *ngIf="!editMode" class="delete-btn" viewBox="0 96 960 960" (click)="onDelete.emit()">
+                <path d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+            </svg>
+            <svg *ngIf="editMode" class="delete-btn" viewBox="0 96 960 960" (click)="edit(true)">
+                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+            </svg>
+            <svg *ngIf="editMode" class="edit-btn" viewBox="0 96 960 960" (click)="edit()">
+                <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"/>
+            </svg>
+        </div>
+    </nav>
+    <div class="comments-btn-cnt">
+        <button class="comments-btn" (click)="commentsShown = !commentsShown">
+            <svg viewBox="0 96 960 960">
+                <path *ngIf="commentsShown" d="M480 711 240 471l43-43 197 198 197-197 43 43-240 239Z"/>
+                <path *ngIf="!commentsShown" d="m283 711-43-43 240-240 240 239-43 43-197-197-197 198Z"/>
+            </svg>
+            Kommentare ({{ comments.length }})
+        </button>
+    </div>
+    <div [class]="'comments-area box' + (commentsShown ? ' shown' : '')">
+        <div *ngIf="auth.signedIn" class="comments-input">
+            <textarea id="message-input"></textarea>
+            <button class="btn" (click)="sendComment()">Senden</button>
+        </div>
+        <app-comment *ngFor="let c of comments" [key]="c" [quoteKey]="key" (onDelete)="deleteComment(c)"></app-comment>
+    </div>
+</main>

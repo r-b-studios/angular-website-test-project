@@ -1,0 +1,32 @@
+<main class="box">
+    <p class="title-label">{{ data.title }}</p>
+    <p class="description-label">{{ data.description }}</p>
+    <div class="show-details-btn">
+        <button (click)="detailsShown = !detailsShown">
+            <div [class]="'icon' + (detailsShown ? '' : ' turned')"></div>
+            Details
+        </button>
+    </div>
+    <table class="box">
+        <tr>
+            <td>Download-Größe:</td>
+            <td>{{ data.downloadSize }}</td>
+        </tr>
+        <tr>
+            <td>Installations-Größe:</td>
+            <td>{{ data.installationSize }}</td>
+        </tr>
+        <tr>
+            <td>Typ:</td>
+            <td>{{ data.type }}</td>
+        </tr>
+        <tr>
+            <td>Veröffentlichungsdatum:</td>
+            <td>{{ data.publishDate }}</td>
+        </tr>
+    </table>
+    <img [class]="detailsShown ? 'moved' : ''" [src]="'assets/img/' + data.imageURL">
+    <nav>
+        <button class="btn" (click)="download()">Herunterladen</button>
+    </nav>
+</main>

@@ -1,0 +1,170 @@
+main {
+
+    .previous-label {
+        font-style: italic;
+        color: #ddd;
+    }
+
+    .quote-label {
+        margin-bottom: 2px;
+    }
+
+    .description-label {
+        font-style: italic;
+        color: #ddd;
+        margin-bottom: 2px;
+    }
+
+    .author-label {
+        text-align: right;
+    }
+
+    .edit-area {
+        margin-bottom: 5px;
+        transition: 0.3s ease-in-out;
+
+        &:not(.edit) {
+            height: 0;
+        }
+
+        .input-label {
+            color: #ccc;
+            margin-bottom: 2px;
+            font-style: italic;
+        }
+
+        input {
+            margin-top: 2px;
+            margin-bottom: 6px;
+            width: 100%;
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .like-btns {
+            display: flex;
+            align-items: center;
+
+            svg {
+                fill: white;
+                padding: 5px;
+                width: 40px;
+                height: 40px;
+                margin-left: 10px;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    fill: #98f0ff;
+                }
+            }
+        }
+
+        .edit-btns {
+            display: flex;
+
+            svg {
+                width: 30px;
+                height: 30px;
+                margin-top: 10px;
+                border-radius: 5px;
+                padding: 4px;
+                fill: white;
+                transition: 0.3s ease-in-out;
+                cursor: pointer;
+
+                &:first-child {
+                    margin-right: 5px;
+                }
+            }
+
+            .delete-btn {
+                background-color: #ff2e2e;
+    
+                &:hover {
+                    background-color: #ff5252;
+                }
+            }
+
+            .edit-btn {
+                background-color: #2e8fff;
+    
+                &:hover {
+                    background-color: #5fb2ff;
+                }
+            }
+        }
+    }
+
+    .comments-btn-cnt {
+        display: flex;
+        justify-content: center;
+        margin-top: -20px;
+
+        .comments-btn {
+            display: flex;
+
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: white;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .comments-area {
+        width: 100%;
+        background-color: #323338;
+        margin: 0;
+        margin-top: 5px;
+        transition: 0.5s ease-in-out;
+
+        &.shown {
+            max-height: 400px;
+        }
+
+        &:not(.shown) {
+            height: 0px;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        &::-webkit-scrollbar {
+            width: 15px;
+            background-color: #45464e;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #6d6f7c;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #808392;   
+            }
+        }
+
+        .comments-input {
+            display: flex;
+
+            textarea {
+                resize: none;
+                width: calc(100% - 125px);
+                background: #45474d;
+            }
+
+            button {
+                width: 100px;
+                margin-left: 25px;
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('assets/fonts/open-sans.ttf');
+}
+
+@font-face {
+    font-family: 'Alien Encounters';
+    src: url('assets/fonts/alien-encounters.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: unset;
+    background-color: transparent;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Open Sans';
+    font-size: 11pt;
+    box-sizing: border-box;
+    user-select: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: #323338;
+}
+
+.box {
+    background-color: #232427;
+    padding: 25px;
+    width: 800px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #0002;
+}
+
+button {
+    cursor: pointer;
+}
+
+input, textarea {
+    background-color: #323338;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px 2px #0002;
+    color: #ddd;
+
+    &:focus {
+        outline: unset;
+    }
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+    max-height: 400px;
+}
+
+input {
+    height: 30px;
+}
+
+img {
+    pointer-events: none;
+}
+
+.btn {
+    width: 200px;
+    height: 35px;
+    box-shadow: 2px 2px 2px #0002;
+    background-color: #445883;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+    margin: auto;
+
+    &:hover {
+        background-color: #566fa5;
+    }
+}
